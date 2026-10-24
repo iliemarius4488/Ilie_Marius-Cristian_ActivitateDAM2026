@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TemaSeminar4</string>
+
+    <string-array name="genuri_filme">
+        <item>Actiune</item>
+        <item>Comedie</item>
+        <item>Drama</item>
+        <item>Horror</item>
+        <item>SF</item>
+        <item>Animatie</item>
+    </string-array>
+</resources>
