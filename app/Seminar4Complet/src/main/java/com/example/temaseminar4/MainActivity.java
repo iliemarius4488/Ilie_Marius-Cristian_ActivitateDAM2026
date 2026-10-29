@@ -12,10 +12,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ADAUGARE = 1;
 
+    private List<Cinema> CinemaList;
     private TextView tvRezultat;
 
     @Override
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        CinemaList = new ArrayList<>();
 
         tvRezultat = findViewById(R.id.tvRezultat);
     }
@@ -42,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_ADAUGARE);
     }
 
+    public void afiseazaListViewCinematografe(View view) {
+        Intent intent = new Intent(MainActivity.this, afisareCinematografe.class);
+        intent.putExtra("Cinemas", new ArrayList<>(CinemaList));
+        startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -50,10 +62,12 @@ public class MainActivity extends AppCompatActivity {
             Cinema cinema = (Cinema) data.getSerializableExtra("cinema");
 
             if (cinema != null) {
+                CinemaList.add(new Cinema(cinema.getNume(), cinema.getGen(), cinema.getTipSala(), cinema.isParcare(), cinema.isAre3D(), cinema.getRating()));
                 tvRezultat.setText(cinema.toString());
                 Toast.makeText(this, "Cinematograf adaugat: " + cinema.getNume(),
                         Toast.LENGTH_LONG).show();
             }
         }
     }
+
 }

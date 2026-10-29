@@ -26,6 +26,10 @@
             android:name=".AdaugareCinemaAI"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".afisareCinematografe"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
