@@ -28,9 +28,7 @@ public class afisareCinematografe extends AppCompatActivity {
             return insets;
         });
 
-
-        cinemaList = (ArrayList<Cinema>)
-                getIntent().getSerializableExtra("Cinemas");
+        cinemaList = (ArrayList<Cinema>)getIntent().getSerializableExtra("Cinemas");
 
         if (cinemaList == null) {
             cinemaList = new ArrayList<>();
